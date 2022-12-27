@@ -16,7 +16,6 @@ function Product(props) {
     </div>
   );
 }
-We can then create an array of products and use the map function to render a list of Product components:
 
 const products = [
   {
@@ -46,8 +45,6 @@ function App() {
     </div>
   );
 }
-Add to cart and delete from cart:
-To add a product to the cart, We can create a cart component that keeps track of the products in the cart and displays them on the page. We can use the useState hook to manage the state of the cart and update it when a product is added or removed.
 
 import React, { useState } from 'react';
 
@@ -74,7 +71,6 @@ function Cart() {
     </div>
   );
 }
-To delete a product from the cart, We can add a button to the Product component that calls the handleRemoveFromCart function when clicked.
 
 import React, { useState } from 'react';
 
