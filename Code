@@ -1,0 +1,87 @@
+Add 4 different products:
+First, we will need to create a component for each product that includes a description and a button to add the product to the cart. We can use the useState hook to manage the state of each product and display the relevant information on the page. For example:
+
+import React, { useState } from 'react';
+
+function Product(props) {
+  const [inCart, setInCart] = useState(false);
+
+  const handleAddToCart = () => {
+    setInCart(true);
+  }
+
+  return (
+    <div>
+      <h3>{props.name}</h3>
+      <p>{props.description}</p>
+      {!inCart && <button onClick={handleAddToCart}>Add to Cart</button>}
+    </div>
+  );
+}
+We can then create an array of products and use the map function to render a list of Product components:
+
+const products = [
+  {
+    name: 'Product 1',
+    description: 'This is product 1'
+  },
+  {
+    name: 'Product 2',
+    description: 'This is product 2'
+  },
+  {
+    name: 'Product 3',
+    description: 'This is product 3'
+  },
+  {
+    name: 'Product 4',
+    description: 'This is product 4'
+  }
+];
+
+function App() {
+  return (
+    <div>
+      {products.map(product => (
+        <Product name={product.name} description={product.description} />
+      ))}
+    </div>
+  );
+}
+Add to cart and delete from cart:
+To add a product to the cart, We can create a cart component that keeps track of the products in the cart and displays them on the page. We can use the useState hook to manage the state of the cart and update it when a product is added or removed.
+
+import React, { useState } from 'react';
+
+function Cart() {
+  const [items, setItems] = useState([]);
+
+  const handleAddToCart = (product) => {
+    setItems([...items, product]);
+  }
+
+  const handleRemoveFromCart = (product) => {
+    setItems(items.filter(item => item !== product));
+  }
+
+  return (
+    <div>
+      <h2>Cart</h2>
+      {items.map(item => (
+        <div>
+          <p>{item.name}</p>
+          <button onClick={() => handleRemoveFromCart(item)}>Remove from Cart</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+To delete a product from the cart, We can add a button to the Product component that calls the handleRemoveFromCart function when clicked.
+
+import React, { useState } from 'react';
+
+function Product(props) {
+  const [inCart, setInCart] = useState(false);
+
+  const handleAddToCart = () => {
+   
